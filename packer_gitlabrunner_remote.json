@@ -34,7 +34,7 @@
         "--extra-vars",
         "aws_region={{user `aws_region`}}"
       ],
-      "playbook_file": "./playbook_gitlab_runner.yml",
+      "playbook_file": "provision/playbook_gitlab_runner.yml",
       "type": "ansible"
     }
   ],

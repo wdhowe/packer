@@ -30,16 +30,16 @@
   ],
   "provisioners": [
     {
-      "script": "ansible_bootstrap.sh",
+      "script": "provision/ansible_bootstrap.sh",
       "type": "shell"
     },
     {
       "extra_arguments": [
         "--extra-vars \"aws_region={{user `aws_region`}}\""
       ],
-      "playbook_file": "./playbook_gitlab_runner.yml",
+      "playbook_file": "provision/playbook_gitlab_runner.yml",
       "role_paths": [
-        "gitlab-runner"
+        "provision/gitlab-runner"
       ],
       "type": "ansible-local"
     }

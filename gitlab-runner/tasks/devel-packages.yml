@@ -1,0 +1,12 @@
+---
+# tasks file for devel-packages
+
+- name: devel-packages|Install development packages
+  yum:
+    #lock_timeout: 180
+    name:
+      - git2u
+      - git-lfs
+      - awscli
+    state: present
+...

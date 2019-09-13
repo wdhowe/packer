@@ -1,0 +1,13 @@
+# Playbook: GitLab Runner
+# Install/Setup: GitLab Runner, Docker, ECR Helper
+
+- name: gitlab_runner|Execute gitlab_runner playbook
+  hosts: all
+  become: yes
+  become_method: sudo
+  gather_facts: yes
+
+  # Run gitlab-runner role tasks
+  roles:
+    - { role: gitlab-runner, tags: gitlab-runner }
+

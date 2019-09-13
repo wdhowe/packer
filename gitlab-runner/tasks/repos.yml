@@ -1,0 +1,16 @@
+---
+- name: repos|Add the epel repo
+  yum:
+    #lock_timeout: 180
+    name: 'https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm'
+    state: present
+
+- name: repos|Add the IUS repo
+  yum:
+    #lock_timeout: 180
+    name: 'https://centos7.iuscommunity.org/ius-release.rpm'
+    state: present
+
+- name: repos|Enable the Amazon Linux Extras Docker Repo
+  command: "amazon-linux-extras enable docker"
+...

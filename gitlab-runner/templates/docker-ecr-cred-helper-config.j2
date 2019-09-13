@@ -1,0 +1,5 @@
+{
+    "credHelpers": {
+            "{{ aws_account_id_output.content | from_json | json_query('AccountId') }}.dkr.ecr.{{ aws_region }}.amazonaws.com": "ecr-login"
+    }
+}

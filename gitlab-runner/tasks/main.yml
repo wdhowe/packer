@@ -1,0 +1,27 @@
+---
+# tasks file for gitlab-runner
+
+# Add repos
+- import_tasks: repos.yml
+  tags: repos
+
+# Install development packages
+- import_tasks: devel-packages.yml
+  tags: devel-packages
+
+# Setup docker
+- import_tasks: docker.yml
+  tags: docker
+
+# Install GitLab Runner
+- import_tasks: gitlab-runner-software.yml
+  tags: gitlab-runner-software
+
+# Setup ECR Credential Helper
+- import_tasks: ecr-credential-helper.yml
+  tags: ecr-credential-helper
+
+# System wide updates
+- import_tasks: updates.yml
+  tags: updates
+...

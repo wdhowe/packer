@@ -1,0 +1,23 @@
+---
+# tasks file for docker
+
+- name: docker|Install docker
+  yum:
+    #lock_timeout: 180
+    name:
+      - docker
+    state: present
+
+- name: docker|Enable service docker and ensure it is not masked
+  systemd:
+    name: docker
+    enabled: yes
+    state: started
+    masked: no
+
+- name: docker|Adding existing user ec2-user to group docker
+  user:
+    name: ec2-user
+    groups: docker
+    append: yes
+...

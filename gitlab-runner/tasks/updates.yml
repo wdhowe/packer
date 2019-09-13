@@ -1,0 +1,7 @@
+---
+- name: updates|Update all packages to latest
+  yum:
+    #lock_timeout: 180
+    name: '*'
+    state: latest
+...

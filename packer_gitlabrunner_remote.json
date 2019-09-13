@@ -1,0 +1,54 @@
+{
+  "builders": [
+    {
+      "ami_name": "{{user `aws_ami_name`}}_{{ isotime | clean_resource_name }}{{ user `magic_reference_date` | clean_resource_name }}",
+      "associate_public_ip_address": true,
+      "force_deregister": "{{user `aws_force_deregister`}}",
+      "instance_type": "{{user `aws_ec2_type`}}",
+      "region": "{{user `aws_region`}}",
+      "security_group_id": "{{user `aws_security_group_id`}}",
+      "source_ami_filter": {
+        "filters": {
+          "name": "amzn2-ami-hvm-2*-x86_64-gp2",
+          "root-device-type": "ebs",
+          "virtualization-type": "hvm"
+        },
+        "most_recent": true,
+        "owners": [
+          "amazon"
+        ]
+      },
+      "ssh_keypair_name": "{{user `aws_ssh_keypair_name`}}",
+      "ssh_private_key_file": "{{user `aws_ssh_private_key_file`}}",
+      "ssh_username": "{{user `aws_ssh_user`}}",
+      "subnet_id": "{{user `aws_subnet_id`}}",
+      "tags": {
+        "Name": "{{user `aws_tag_name`}}"
+      },
+      "type": "amazon-ebs"
+    }
+  ],
+  "provisioners": [
+    {
+      "extra_arguments": [
+        "--extra-vars",
+        "aws_region={{user `aws_region`}}"
+      ],
+      "playbook_file": "./playbook_gitlab_runner.yml",
+      "type": "ansible"
+    }
+  ],
+  "variables": {
+    "aws_ami_name": "gitlab_runner",
+    "aws_ec2_type": "t2.micro",
+    "aws_force_deregister": "false",
+    "aws_region": "us-west-2",
+    "aws_security_group_id": "",
+    "aws_ssh_keypair_name": "",
+    "aws_ssh_private_key_file": "",
+    "aws_ssh_user": "ec2-user",
+    "aws_subnet_id": "",
+    "aws_tag_name": "gitlab_runner"
+  }
+}
+

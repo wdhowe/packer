@@ -28,6 +28,7 @@
       "type": "amazon-ebs"
     }
   ],
+  "description": "Build an Amazon Linux 2 EC2 AMI, using a GitLab Runner Ansible playbook in local mode.",
   "provisioners": [
     {
       "script": "provision/ansible_bootstrap.sh",
